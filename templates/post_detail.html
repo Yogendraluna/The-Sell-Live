@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+  {% block content %}
+		<section class="ftco-section work-single ftco-no-pt ftco-no-pb">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 d-flex align-items-stretch">
+						<div class="img w-100" style="background-image: url({{ object.image.url }}); background-size: contain;"></div>
+					</div>
+					<div class="col-md-6 py-md-5">
+						<div class="text pl-md-5 py-5">
+							<h2><a href="{% url 'post_detail' object.pk %}">{{ object.product_name }}</a></h2>
+							<p>{{ object.product_description}}</p>
+              
+              <div class="work-info mb-4">
+								<span>Product Price</span>
+								<h3>&#8377 {{ object.price }}</h3>
+							</div>
+
+							<div class="work-info mb-4">
+								<span>Seller Name</span>
+								<h3>{{ object.user }}</h3>
+							</div>
+
+							<div class="work-info mb-4">
+								<span>Contact Number</span>
+								<h3>{{ object.phone_number }}</h3>
+							</div>
+
+							<ul class="ftco-footer-social p-0">
+	              <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+	              <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+	              <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+	            </ul>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+{% endblock content %}
+<!-------------------------------------------------------------------------------------------------------------------------------->

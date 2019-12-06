@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<nav id="navbar" class="navbar">
+        <ul class="nav-menu">
+          <li>
+            <a data-scroll="home" href="#home" class="dot active">
+              <span>Home</span>
+            </a>
+          </li>
+          <li>
+            <a data-scroll="work" href="#work" class="dot">
+              <span>Gallery</span>
+            </a>
+          </li>
+          <li>
+            <a data-scroll="contact" href="#contact" class="dot">
+              <span>Contact</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- End Nav Section -->
+
+  
+    <!-- Start Gallery Section -->
+    <section id="work" class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+            <div class="col-md-4 heading-section text-center ftco-animate pb-5">
+                <h2 class="mb-4">Selected Projects</h2>
+                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country.</p>
+            </div>
+        </div>
+        </div> 
+        <div class="container-fluid px-md-0">
+                <div class="row no-gutters">
+                  {% for post in object_list %}
+                  <div class="col-md-4 ftco-animate">
+                      <div class="model img d-flex align-items-end" style="background-image: url('{{ post.image.url }}'); background-size: contain;">
+                          <a href='{{ post.image.url }}' class="icon image-popup d-flex justify-content-center align-items-center">
+                                      <span class="icon-expand"></span>
+                                  </a>
+                          <div class="desc w-100 px-4">
+                          <div class="text w-100 mb-3">
+                            <h2><span><a href="{% url 'post_detail' post.pk %}" style="color: greenyellow;">{{ post.product_name }}</a></span></h2> &middot;
+                            <span>by {{ post.user }}</span><br>
+                            <span>Description: {{ post.product_description | slice:":30" }}...</span><br>
+                            <h2><span>Price: &#8377 {{ post.price }}</span></h2>
+                          </div>
+                      </div>
+                      </div>
+                  </div>
+                <br>
+              {% endfor %}
+              </div>
+            </div> 
+        </section>
+        <!-- End Project Section -->
+
+{% endblock content %}
